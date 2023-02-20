@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,12 +17,13 @@ public class Member {
     @Column(name = "member_id") //컬럼명 설정
     private Long id;
 
-    @NotEmpty //null값이 안들어가게끔설정
+    //@NotEmpty //null값이 안들어가게끔설정
     private  String name;
 
     @Embedded //address에는 내장 타입의 데이터가 들어간다
     private Address address;
 
+    @JsonIgnore //json호출 무시
     @OneToMany(mappedBy = "member")// 하나의 사람이 여러 order(주문을 하기 때문)에 one to many사용
     //mappedby는 연관관계 fk키를 참조하는 곳에 넣어주고 현재 entity가 member이기 때문에 order에있는 member로 매핑해준다
     private List<Order> orders = new ArrayList<>();

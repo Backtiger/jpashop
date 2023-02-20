@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create #어플리케이션 실행시점에 테이블을 전부 지우고 내가 가지고 있는 entity를 보고 새롭게 테이블생성
+      ddl-auto: create #어플리케이션 실행시점에 테이블을 전부 지우고 내가 가지고 있는 entity를 보고 새롭게 테이블생성 non-테이블을 드랍하지않고 내버려두기 때문에 한번 만들면 계속 사용가능하다
     properties:
       hibernate:
         #        show_sql: true         # show_sql: true //실패가 나오면 뜸
