@@ -25,6 +25,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools' //devtools가 있으면 다시빌드말고 수정된부분만 컴파일해주면 변경된 부분이 바로 적용됨
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 	implementation 'org.springframework.boot:spring-boot-starter-validation' //스프링 부트 2.3버젼이상부턴 직접 넣어줘야함
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
+
 
 	implementation 'org.jetbrains:annotations:20.1.0'
 

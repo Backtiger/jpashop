@@ -22,6 +22,11 @@ public class OrderSimpleApiController {
     public List<Order> ordersV1()
     {
         List<Order> all = orderRepository.findAllByString(new OrderSearch());
+        //내가 원하는 애만 골라서 출력하는 방법
+        for(Order order : all){
+            order.getMember().getName();//lazy강제 초기화
+            order.getDelivery().getAddress();//lazy강제 초기화
+        }
         return all;
     }
 }
