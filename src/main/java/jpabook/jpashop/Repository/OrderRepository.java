@@ -1,5 +1,6 @@
 package jpabook.jpashop.Repository;
 
+import jpabook.jpashop.api.OrderSimpleApiController;
 import jpabook.jpashop.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -87,5 +88,19 @@ public class OrderRepository {
 
        return query.getResultList();
    }
-   //Querydsl은 동적쿼리를 손쉽게 해주기 위한 라이브러리 Querydsl를 사용함
+
+   // order의 member,delivery를 join해서 select시에 한방에 전부 가져옴
+    //jpa의 fetch를 사용했기때문에 fetch join이라고함
+    //주의사항 join 할때 앞에 띄워쓰기 해줘야함
+    public List<Order> findAllWithMemberDelivery() {
+      return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m"   +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
+
+    public List<OrderSimpleApiController.SimpleOrderDto> findOrderDtos() {
+    }
+    //Querydsl은 동적쿼리를 손쉽게 해주기 위한 라이브러리 Querydsl를 사용함
 }
